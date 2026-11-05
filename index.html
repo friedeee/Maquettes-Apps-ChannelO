@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apps ChannelO — maquettes</title>
+<link rel="stylesheet" href="assets/css/maquette.css">
+<script>
+  try { var t = localStorage.getItem('channelo-maquette-theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; else if (matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.dataset.theme = 'dark'; } catch (e) { /* ignoré */ }
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a1 1 0 0 1-1-1V7z"/><path d="M4 7l11-3v3"/><circle cx="16" cy="13.5" r="1.3"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6M9 16h3"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7Z"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+</defs></svg>
+
+<header class="pbar">
+  <div class="pbar__title">ChannelO · Apps à concevoir</div>
+  <span class="pbar__spacer"></span>
+  <button type="button" class="btn" id="theme"></button>
+</header>
+
+<main class="home">
+  <h1>Maquettes cliquables des apps</h1>
+  <p class="home__lead">Chaque app a trois interfaces séparées : <strong>Mobile</strong> (l'application du citoyen), <strong>Agent</strong> (le dossier de conversation dans la console) et <strong>Console</strong> (la page de réglage de l'administrateur). Elles partagent la même discussion : ce que l'agent envoie arrive dans l'onglet Mobile, et inversement. Le menu « Cas à montrer » affiche les états vides, les erreurs et le chargement. Toutes les données sont fictives.</p>
+
+  <div class="home__grid" id="apps"></div>
+</main>
+
+<script>
+  (function () {
+    var apps = [
+      ['catalogue', 'box', 'Catalogue', 'Présenter ses produits ; le citoyen les parcourt sans quitter la discussion.', 1, '', true],
+      ['commande', 'bag', 'Commande', 'Panier, validation, statut que l\'agent fait avancer.', 1, 'Catalogue', true],
+      ['paiement', 'wallet', 'Paiement Mobile Money', 'Encaisser par MTN MoMo ou Moov Money, directement sur le compte de l\'entité.', 1, '', true],
+      ['rendez-vous', 'calendar', 'Rendez-vous', 'Réserver un créneau ; agenda et rappels automatiques.', 1, 'Horaires (existant)', true],
+      ['livraison', 'truck', 'Livraison et suivi', 'Le citoyen sait où en est sa livraison sans avoir à demander.', 2, 'Commande', true],
+      ['devis', 'receipt', 'Devis et facture', 'Chiffrer une demande, faire accepter, facturer et encaisser.', 2, 'Paiement', true],
+      ['faq', 'bolt', 'Réponses rapides et FAQ', 'Moins de questions répétitives, réponses immédiates.', 2, '', true],
+      ['diffusions', 'megaphone', 'Diffusions', 'Promotions envoyées aux abonnés qui l\'ont accepté.', 2, 'Actualités (existant)', true],
+      ['fidelite', 'tag', 'Fidélité et coupons', 'Points, récompenses et codes promo.', 3, 'Commande', true],
+      ['connecteurs', 'link', 'Connecteurs', 'Google Sheets, webhook : brancher les outils déjà utilisés.', 3, '', true]
+    ];
+    document.getElementById('apps').innerHTML = apps.map(function (a, i) {
+      var tag = 'div';
+      return '<' + tag + ' class="app-tile ' + (a[6] ? '' : 'is-todo') + '">' +
+        '<div class="app-tile__top"><span class="app-tile__icon"><svg class="i" aria-hidden="true"><use href="#i-' + a[1] + '"></use></svg></span><h2>' + (i + 1) + '. ' + a[2] + '</h2></div>' +
+        '<p>' + a[3] + '</p>' +
+        '<div class="app-tile__meta"><span class="badge badge--info badge--plain">Priorité ' + a[4] + '</span>' + (a[5] ? '<span class="badge badge--plain">Dépend de : ' + a[5] + '</span>' : '') +
+        (a[6] ? '<span class="badge badge--ok">Maquette prête</span>' : '<span class="badge">À concevoir</span>') + '</div>' +
+        (a[6] ? '<div class="app-tile__links">' + [['mobile', 'phone', 'Mobile'], ['agent', 'chat', 'Agent'], ['admin', 'settings', 'Console']].map(function (l) {
+          return '<a class="btn btn--sm" href="proposition-' + a[0] + '.html#' + l[0] + '"><svg class="i" aria-hidden="true"><use href="#i-' + l[1] + '"></use></svg>' + l[2] + '</a>';
+        }).join('') + '</div>' : '') + '</' + tag + '>';
+    }).join('');
+
+    var btn = document.getElementById('theme');
+    function paint() {
+      var dark = document.documentElement.dataset.theme === 'dark';
+      btn.innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-' + (dark ? 'sun' : 'moon') + '"></use></svg>' + (dark ? 'Mode clair' : 'Mode sombre');
+    }
+    btn.addEventListener('click', function () {
+      var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('channelo-maquette-theme', next); } catch (e) { /* ignoré */ }
+      paint();
+    });
+    paint();
+  })();
+</script>
+</body>
+</html>
